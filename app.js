@@ -8,18 +8,17 @@ var lessMiddleware = require('less-middleware');
 
 var mongoose = require('mongoose');
 var mongoDB = 'mongodb://127.0.0.1:27017/pipa';
-
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
-
 var db = mongoose.connection;
-
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var tobacco = require('./routes/tobacco');
+var coal = require('./routes/coal');
+var hookah = require('./routes/hookah');
 
 var app = express();
 
@@ -39,6 +38,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/dohany', tobacco);
+app.use('/coal', coal);
+app.use('/pipa', hookah);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
