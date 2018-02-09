@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Pippantásch</title>
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <link href="stylesheets/shop-item.css" rel="stylesheet">
+    <link href="stylesheets/style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+    <h1 class="header">Pippantásch</h1>
+    <div class="container">
+        <div class="row img-row">
+            <div class="col-md-4 item">
+                <img onclick="onTabaccoButtonClicked()" class="img-responsive" src="images/tobacco.jpg" alt="pepsi">
+                <div class="item-overlay top"></div>
+            </div>
+            <div class="col-md-4 item">
+                <img onclick="onCoalButtonClicked()" class="img-responsive" src="images/coal.jpg" alt="pepsi">
+                <div class="item-overlay top"></div>
+            </div>
+            <div class="col-md-4 item">
+                <img onclick="onHoocahButtonClicked()" class="img-responsive" src="images/hookah.jpg" alt="pepsi">
+                <div class="item-overlay top"></div>
+            </div>
+        </div>
+    </div>
+<h2>Eladás</h2>
+
+    <div class="container" id="form-container">
+        <form action="">
+            <div class="row form-group">
+                <div class="col-md-6">
+                    <label for="name">Neved</label>
+                </div>
+                <div class="col-md-6">
+                    <input id="name" class="form-control" type="text">
+                    </input>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-6">
+                    <label for="name">Szobaszámod</label>
+                </div>
+                <div class="col-md-6">
+                    <input id="name" class="form-control" type="text">
+                    </input>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-6">
+                    <label for="name">Milyen ízű dohányod van?</label>
+                </div>
+                <div class="col-md-6">
+                    <input id="name" class="form-control" type="text">
+                    </input>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-6">
+                    <label for="name">Mennyi?</label>
+                </div>
+                <div class="col-md-6">
+                    <input id="name" class="form-control" type="text">
+                    </input>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-6">
+                    <label for="name">Mennyiért?</label>
+                </div>
+                <div class="col-md-6">
+                    <input id="name" class="form-control" type="text">
+                    </input>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-success" />
+        </form>
+    </div>
+</body>
