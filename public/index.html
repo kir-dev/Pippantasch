@@ -2,14 +2,10 @@
 <html lang="hu">
 
 <head>
-
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>Pippantásch</title>
+    <title>Pipásch</title>
 
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.js"></script>
 
@@ -24,57 +20,46 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
-    <link href="stylesheets/shop-item.css" rel="stylesheet">
+
     <link href="stylesheets/style.css" rel="stylesheet">
-
-
+    <script src="javascripts/loadContent.js"></script>
 </head>
 
 <body>
-    
-    <h1 class="header">Pippantásch</h1>
-    <div class="container">
-        <div class="row img-row">
-            <div class="col-md-4 item">
-                <img onclick="onTabaccoButtonClicked()"  class="img-responsive" src="images/tobacco.jpg" alt="pepsi">
-                <div class="item-overlay top"></div>
-            </div>
-            <div class="col-md-4 item">
-                <img onclick="onCoalButtonClicked()"  class="img-responsive" src="images/coal.jpg" alt="pepsi">
-                <div class="item-overlay top"></div>
-            </div>
-            <div class="col-md-4 item">
-                <img onclick="onHoocahButtonClicked()" class="img-responsive" src="images/hookah.jpg" alt="pepsi">
-                <div class="item-overlay top"></div>
-            </div>
-        </div>
 
+    <h1 class="header">Pipásch</h1>
+    <div class="container">
         <div class="row">
             <div class="col-md-3">
                 <div class="list-group">
                     <button id="tobaccoButton" onclick="onTabaccoButtonClicked()" class="list-group-item active">Dohány</button>
                     <button id="coalButton" onclick="onCoalButtonClicked()" class="list-group-item">Szén</button>
-                    <button id="hookahButton" onclick="onHoocahButtonClicked()" class="list-group-item ">Pipa</button>
                 </div>
-                <a class="btn btn-success btn-block" href="/eladas" style="margin: 15px 0">Eladok</a>
+                <a class="btn btn-danger btn-block" href="/eladas" style="margin: 15px 0">Eladok</a>
             </div>
 
             <div class="col-md-9">
-
                 <div id="item-container" class="thumbnail">
-
+                        <div class="caption-full">
+                                <h4 class="pull-right">999 HUF/tömés</h4>
+                                <h4>
+                                    <a href="#">Málnás</a>
+                                </h4>
+                                <button id="" onclick=""  class="btn btn-success pull-right">Veszek egyet</button>
+                                <p>
+                                        Kiss Józsi</a>
+                                </p>
+                                <p>
+                                    Szobaszám: 1020</p>
+                                <p>Készleten: 12 tömés</p>
+                            </div><hr />
                 </div>
-
             </div>
-
         </div>
-
     </div>
 
     <div class="container">
-
         <hr>
-
         <footer>
             <div class="row">
                 <div class="col-lg-12">
@@ -82,100 +67,7 @@
                 </div>
             </div>
         </footer>
-
     </div>
-
-
-    <script>
-        var itemContainer = $('#item-container');
-        $(onTabaccoButtonClicked);
-
-        function onTabaccoButtonClicked() {
-            $('.active').removeClass('active');
-            $('#tobaccoButton').addClass('active');
-            itemContainer.empty();
-            $.get('/dohany').then(data => {
-
-                data.forEach(item => {
-                    itemContainer.append(
-                        `                    <div class="caption-full">
-                        <h4 class="pull-right">${item.price} HUF/tömés</h4>
-                        <h4>
-                            <a href="#">${item.type}</a>
-                        </h4>
-                        <button  class="btn btn-success pull-right">Veszek egyet</button>
-                        <p>
-                                ${item.owner.name}</a>
-                        </p>
-                        <p>
-                            Szobaszám: ${item.owner.room}</p>
-                        <p>Készleten: ${item.stock} tömés</p>
-                    </div><hr />`
-                    )
-                });
-            }).fail(error => {
-                console.log(error);
-            });
-        }
-
-
-        function onHoocahButtonClicked() {
-            $('.active').removeClass('active');
-            $('#hookahButton').addClass('active');
-            itemContainer.empty();
-            $.get('/pipa').then(data => {
-
-                data.forEach(item => {
-                    itemContainer.append(
-                        `                    <div class="caption-full">
-                        <h4 class="pull-right">${item.price} HUF/tömés</h4>
-                        <h4>
-                            <a href="#">${item.type}</a>
-                        </h4>
-                        <button class="btn btn-success pull-right">Veszek egyet</button>
-                        <p>
-                                ${item.owner.name}</a>
-                        </p>
-                        <p>
-                            Szobaszám: ${item.owner.room}</p>
-                        <p>Készleten: ${item.stock} tömés</p>
-                    </div>`
-                    )
-                });
-
-            }).fail(error => {
-                console.log(error);
-            });
-        }
-
-        function onCoalButtonClicked() {
-            $('.active').removeClass('active');
-            $('#coalButton').addClass('active');
-            itemContainer.empty();
-            $.get('/szen').then(data => {
-
-                data.forEach(item => {
-                    itemContainer.append(
-                        `                    <div class="caption-full">
-                        <h4 class="pull-right">${item.price} HUF/tömés</h4>
-                        <h4>
-                            <a href="#">${item.type}</a>
-                        </h4>
-                        <button class="btn btn-success pull-right">Veszek egyet</button>
-                        <p>
-                                ${item.owner.name}</a>
-                        </p>
-                        <p>
-                            Szobaszám: ${item.owner.room}</p>
-                        <p>Készleten: ${item.stock} tömés</p>
-                    </div>`
-                    )
-                });
-            }).fail(error => {
-                console.log(error);
-            });
-        }
-    </script>
 </body>
 
 </html>

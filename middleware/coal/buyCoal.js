@@ -1,12 +1,17 @@
-var buyCoal = function (id) {
+var buyCoal = function () {
     return function (req, res, next) {
-        dal.Coal.findById(req.params.id, function (err, doc) {
-            doc.stock--;
-            if (doc.stock <= 0) {
-                doc.remove();
+        dal.Coal.findById(req.params.id, function (err, coal) {
+            if(coal === null){
                 return next();
             }
-            doc.save();
+
+            if (coal.count <= 1) {
+                coal.remove();
+                return next();
+            }
+            
+            coal.count--;
+            coal.save();
             return next();
         });
     };

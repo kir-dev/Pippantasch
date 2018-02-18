@@ -2,12 +2,11 @@ module.exports = function (mongoose) {
     var Schema = mongoose.Schema,
         ObjectId = Schema.ObjectId;
 
-    var Tobacco = new Schema({
+    var Coal = new Schema({
         _id: {
             type: ObjectId,
             default: () => new mongoose.Types.ObjectId()
         },
-        taste: { type: Schema.Types.ObjectId, ref: 'Taste' },
         owner: String,
         roomNumber: Number,
         count: Number,
@@ -16,5 +15,5 @@ module.exports = function (mongoose) {
         timestamps: true
     });
 
-    return Tobacco;
+    return Coal;
 };

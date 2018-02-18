@@ -1,37 +1,20 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function (req, res, next) {
-    res.json([{
-        id: 0,
-        price: 500,
-        type: 'Almás-fahéjas',
-        stock: 6,
-        owner: {
-            name: 'Józsika',
-            room: 1319
-        }
-    },{
-        id: 1,
-        price: 499,
-        type: 'Málnás',
-        stock: 10,
-        owner: {
-            name: 'Bástya',
-            room: 1001
-        }
-    }]);
+var getCoals = require('../middleware/coal/getCoals');
+var createCoal = require('../middleware/coal/createCoal');
+var buyCoal = require('../middleware/coal/buyCoal');
+
+router.get('/', getCoals(), function (req, res, next) {
+    res.json(req.coals);
 });
 
-router.post('/', function(req, res) {
-    //add new tobacco
+router.post('/', createCoal(), function(req, res) {
+    res.sendStatus(204);
 });
 
-
-router.post('/:id/buy', function(req, res) {
-    
-
+router.post('/:id/vasarlas', buyCoal(), function(req, res) {
+    res.sendStatus(204);
 });
 
 module.exports = router;

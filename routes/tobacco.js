@@ -1,37 +1,25 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function (req, res, next) {
-    res.json([{
-        id: 0,
-        price: 500,
-        type: 'Almás-fahéjas',
-        stock: 6,
-        owner: {
-            name: 'Józsika',
-            room: 1319
-        }
-    },{
-        id: 1,
-        price: 499,
-        type: 'Málnás',
-        stock: 10,
-        owner: {
-            name: 'Bástya',
-            room: 1001
-        }
-    }]);
+var getTobaccos = require('../middleware/tobacco/getTobaccos');
+var createTobacco = require('../middleware/tobacco/createTobacco');
+var buyTobacco = require('../middleware/tobacco/buyTobacco');
+var deleteTobacco = require('../middleware/tobacco/deleteTobacco');
+
+router.get('/', getTobaccos(), function (req, res, next) {
+    res.json(req.tobaccos);
 });
 
-router.post('/', function(req, res) {
-    //add new tobacco
+router.post('/', createTobacco(), function (req, res) {
+    res.sendStatus(204);
 });
 
+router.post('/:id/vasarlas', buyTobacco(), function (req, res) {
+    res.sendStatus(204);
+});
 
-router.post('/:id/buy', function(req, res) {
-    
-
+router.delete('/:id', deleteTobacco(), function (req, res) {
+    res.sendStatus(204);
 });
 
 module.exports = router;

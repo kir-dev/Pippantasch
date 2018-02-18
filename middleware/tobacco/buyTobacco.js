@@ -1,12 +1,17 @@
-var buyTobacco = function (id) {
+var buyTobacco = function () {
     return function (req, res, next) {
-        dal.Tobacco.findById(req.params.id, function (err, doc) {
-            doc.stock--;
-            if (doc.stock <= 0) {
-                doc.remove();
+        dal.Tobacco.findById(req.params.id, function (err, tobacco) {
+            if(tobacco === null){
                 return next();
             }
-            doc.save();
+
+            if (tobacco.count <= 1) {
+                tobacco.remove();
+                return next();
+            }
+            
+            tobacco.count--;
+            tobacco.save();
             return next();
         });
     };
