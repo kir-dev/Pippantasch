@@ -6,6 +6,7 @@ function onTabaccoButtonClicked() {
     
     document.getElementById('tobaccoButton').classList.add('active');
     document.getElementById('coalButton').classList.remove('active');
+
     $.get('/dohany').then(data => {
         data.forEach(item => {
             var node = document.createElement('div');
@@ -36,8 +37,11 @@ function onTabaccoButtonClicked() {
             node.appendChild(room);
             
             var count = document.createElement('p');
-            count.innerText = item.count;
+            count.innerText = 'Készleten: ' + item.count + ' tömés';
             node.appendChild(count);
+
+            var line = document.createElement('hr');
+            node.appendChild(line);
 
             itemContainer.appendChild(node);
         });
@@ -86,7 +90,7 @@ function Coal(id, owner, price, roomNumber, count) {
             <p>
                 Szobaszám: ${roomNumber}</p>
             <p>Készleten: ${count} tömés</p>
-        </div>`
+        </div>`;
 }
 
 function onBuyCoal(_id) {
